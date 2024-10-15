@@ -1,0 +1,130 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Asset/Other/fontbig.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Asset/Background/backgroundlevel1.png" type="Texture" id=2]
+[ext_resource path="res://Scene/UI/MapBut.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Script/Menu.gd" type="Script" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="DownIMG" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -267.0
+margin_top = -440.0
+margin_right = 233.0
+margin_bottom = -140.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -185.0
+margin_right = 185.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 5
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "select map
+"
+text = "select map
+"
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -250.0
+margin_top = 150.0
+margin_right = 250.0
+margin_bottom = 100.0
+
+[node name="Button" parent="HBoxContainer" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 100.0
+margin_bottom = 100.0
+imgpath = "res://Asset/Background/backgroundlevel1.png"
+scenepath = "res://Scene/Level/Level1/level1phase1.tscn"
+
+[node name="Button2" parent="HBoxContainer" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_top = 0.0
+margin_right = 204.0
+margin_bottom = 100.0
+text = "2"
+imgpath = "res://Asset/Background/backgroundlevel2.png"
+scenepath = "res://Scene/Level/Level2/level2phase1.tscn"
+
+[node name="Button3" parent="HBoxContainer" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 208.0
+margin_top = 0.0
+margin_right = 308.0
+margin_bottom = 100.0
+text = "3"
+imgpath = "res://Asset/Background/273562369_4838018332979717_1686444342370194218_n.png"
+scenepath = "res://Scene/Level/Level3/level3phase1.tscn"
+
+[node name="Button4" parent="HBoxContainer" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 312.0
+margin_top = 0.0
+margin_right = 412.0
+margin_bottom = 100.0
+text = "4"
+imgpath = "res://Asset/Background/Background.png"
+scenepath = "res://Scene/Level/Level4/level4phase1.tscn"
+
+[node name="Button5" parent="HBoxContainer" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 416.0
+margin_top = 0.0
+margin_right = 516.0
+margin_bottom = 100.0
+focus_mode = 2
+text = "5"
+imgpath = "res://Asset/Background/preview.png"
+scenepath = "res://Scene/Level/Level5/level5phase1.tscn"
+
+[node name="Back_button" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -64.0
+margin_right = 168.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 1 )
+text = "BACK"
+flat = true
+
+[connection signal="pressed" from="Back_button" to="." method="_on_Back_button_pressed"]

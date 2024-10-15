@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Asset/Background/backgroundlevel1.png" type="Texture" id=1]
+[ext_resource path="res://Asset/Background/Background.png" type="Texture" id=2]
+[ext_resource path="res://Scene/Entity/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scene/UI/Fade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scene/Entity/Boss/Boss4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://default_env.tres" type="Environment" id=6]
+[ext_resource path="res://Script/Camera2D.gd" type="Script" id=7]
+[ext_resource path="res://Scene/Map.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 766.667, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 136.25 )
+
+[node name="Map" type="Node2D"]
+script = ExtResource( 8 )
+map = "res://Scene/UI/Menu.tscn"
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( -856, 105 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 8, 32 )
+current = true
+zoom = Vector2( 0.4, 0.4 )
+script = ExtResource( 7 )
+player = NodePath("../Player")
+limit_min = -640.0
+limit_max = 640.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 0, -180 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 6 )
+
+[node name="Fade" parent="." instance=ExtResource( 4 )]
+PlayOnStart = true
+Speed = 0.5
+
+[node name="Mob" type="Node2D" parent="."]
+
+[node name="Boss4" parent="Mob" instance=ExtResource( 5 )]
+MAX_HEALTH = 400
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="MapBG" type="Sprite" parent="Map"]
+position = Vector2( -928, -745 )
+scale = Vector2( 1.2, 1.2 )
+z_index = -2
+texture = ExtResource( 2 )
+centered = false
+
+[node name="MapBG2" type="Sprite" parent="Map"]
+position = Vector2( 0, -745 )
+scale = Vector2( 1.2, 1.2 )
+z_index = -2
+texture = ExtResource( 2 )
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map"]
+scale = Vector2( 1.2, 1.2 )
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2( -2.54313e-05, 120 )
+shape = SubResource( 1 )
+
+[node name="l" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2( -773.333, -10.4167 )
+shape = SubResource( 2 )
+
+[node name="r" type="CollisionShape2D" parent="Map/StaticBody2D"]
+position = Vector2( 773.333, -10.417 )
+shape = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="Map"]
+visible = false
+margin_left = -944.0
+margin_top = 173.0
+margin_right = 656.0
+margin_bottom = 223.0
+color = Color( 0.0901961, 0.0588235, 0.12549, 1 )

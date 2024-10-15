@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Script/MonsterHealthBar.gd" type="Script" id=1]
+[ext_resource path="res://Asset/Other/healthbarr.png" type="Texture" id=2]
+[ext_resource path="res://Asset/Other/font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Asset/Other/healthbarbg.png" type="Texture" id=4]
+
+[node name="HealthBar" type="Node2D"]
+z_index = 100
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureProgress" type="TextureProgress" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 80.0
+margin_bottom = -10.0
+value = 100.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 2 )
+nine_patch_stretch = true
+
+[node name="Percent" type="Label" parent="Control/TextureProgress"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.51
+anchor_bottom = 0.5
+margin_left = -4.0
+margin_top = -4.0
+margin_right = 15.0
+margin_bottom = 11.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 0.976471, 0.952941, 0.933333, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "30"
+align = 1
